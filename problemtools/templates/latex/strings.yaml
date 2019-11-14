@@ -1,0 +1,18 @@
+.en:
+    sampleinputname: Sample Input
+    sampleoutputname: Sample Output
+    sampleinteractname: Sample Interaction
+    sampleinteractreadname: Read
+    sampleinteractwritename: Write
+.sv:
+    sampleinputname: Exempel på indata
+    sampleoutputname: Exempel på utdata
+    sampleinteractname: Exempel på interaktion
+    sampleinteractreadname: Läs
+    sampleinteractwritename: Skriv
+.da:
+    sampleinputname: Inddata-eksempel
+    sampleoutputname: Uddata-eksempel 
+    sampleinteractname: Interaktionseksempel
+    sampleinteractreadname: Læs
+    sampleinteractwritename: Skriv

@@ -5,7 +5,8 @@ import os.path
 import glob
 import tempfile
 import shutil
-
+import yaml
+import io
 
 # For backwards compatibility, remove in bright and shiny future.
 def detect_version(problemdir, problemtex):
@@ -83,24 +84,35 @@ class Template:
             print('%s exists, will not copy it -- in case of weirdness this is likely culprit' % self.problemset_cls)
             self.copy_cls = False
 
+        # Localize strings from templates/latex/strings.yaml
+        with open(os.path.join(self.templatepath, 'strings.yaml'), 'r') as stringfile:
+            self.strings = yaml.load(stringfile)
+
 
     def __enter__(self):
         if self.copy_cls:
             shutil.copyfile(os.path.join(self.templatepath, self.clsfile), self.problemset_cls)
 
         (templfd, self.filename) = tempfile.mkstemp(suffix='.tex', dir=self.basedir)
-        templout = os.fdopen(templfd, 'w')
+        templout = io.open(templfd, 'w', encoding = 'utf8')
         templin = open(os.path.join(self.templatepath, self.templatefile))
         data = {'language': self.language,
                 'shortname': self.shortname}
+        if self.language in self.strings:
+            strings = self.strings[self.language]
+        else:
+            strings = self.strings['.en']
+            print('Unable to find string translations into {}, using English instead'.format(self.language))
+        for s in strings:
+            data[s] = strings[s]
         for line in templin:
             try:
-                templout.write(line % data)
+                templout.write(unicode(line % data))
             except:
                 # This is a bit ugly I guess
                 for sample in self.samples:
                     data['sample'] = sample
-                    templout.write(line % data)
+                    templout.write(unicode(line % data))
                 if self.samples:
                     del data['sample']
         templout.close()
