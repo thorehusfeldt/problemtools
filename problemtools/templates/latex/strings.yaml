@@ -5,14 +5,20 @@
     sampleinteractreadname: Read
     sampleinteractwritename: Write
 .sv:
-    sampleinputname: Exempel på indata
-    sampleoutputname: Exempel på utdata
-    sampleinteractname: Exempel på interaktion
+    sampleinputname: Exempel-indata
+    sampleoutputname: Exempel-utdata
+    sampleinteractname: Exempel-interaktion
     sampleinteractreadname: Läs
     sampleinteractwritename: Skriv
 .da:
-    sampleinputname: Inddata-eksempel
-    sampleoutputname: Uddata-eksempel 
+    sampleinputname: Indlæsningseksempel
+    sampleoutputname: Udlæsningseksempel 
     sampleinteractname: Interaktionseksempel
     sampleinteractreadname: Læs
     sampleinteractwritename: Skriv
+.de:
+    sampleinputname: Eingabebeispiel
+    sampleoutputname: Ausgabebeispiel
+    sampleinteractname: Interaktionsbeispiel
+    sampleinteractreadname: Lies
+    sampleinteractwritename: Schreibe
